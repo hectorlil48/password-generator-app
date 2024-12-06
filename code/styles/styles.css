@@ -1,5 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+/* Gobal Styles */
+:root {
+  /* Primary Colors */
+  --very-dark-grey: #18171f;
+  --dark-grey: #24232c;
+  --grey: #817d92;
+  --almost-white: #e6e5ea;
+
+  /* Secondary Colors */
+  --neon-green: #a4ffaf;
+  --red: #f64a4a;
+  --orange: #fb7c58;
+  --yellow: #f8cd65;
+
+  /* Typography Variables */
+  --font-family: "JetBrains Mono", monospace;
+  --font-weight-bold: 700;
+
+  /* Sizes */
+  --heading-font-size: 2rem;
+  --heading-line-height: 43px;
+  --medium-heading-font-size: 1.5rem;
+  --medium-heading-line-height: 31px;
+  --body-font-size: 1.125rem;
+  --body-line-height: 23px;
+}
+
+/* CSS Reset */
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  background: none;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
 }
