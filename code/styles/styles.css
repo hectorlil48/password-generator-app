@@ -55,4 +55,65 @@ button {
 body {
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
+  background-color: var(--very-dark-grey);
+  color: var(--almost-white);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 540px;
+}
+
+.title {
+  font-size: var(--medium-heading-font-size);
+  line-height: var(--medium-heading-line-height);
+  color: var(--grey);
+  text-align: center;
+  margin-bottom: 31px;
+}
+
+.password-icon-container {
+  background-color: var(--dark-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 28px 19px 32px;
+  margin-bottom: 24px;
+}
+
+.password {
+  font-size: var(--heading-font-size);
+  line-height: var(--heading-line-height);
+  opacity: 25%;
+}
+
+.icon:hover path {
+  fill: var(--almost-white);
+}
+
+.form-container {
+  background-color: var(--dark-grey);
+  padding: 24px 32px 32px;
+}
+
+.slider-container {
+  margin-bottom: 32px;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+.slider-value {
+  font-size: var(--heading-font-size);
+  line-height: var(--heading-line-height);
+  color: var(--neon-green);
 }
