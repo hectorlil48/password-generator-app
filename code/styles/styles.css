@@ -90,6 +90,21 @@ body {
   opacity: 25%;
 }
 
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.copied-message {
+  color: var(--neon-green);
+  display: none;
+}
+
+.icon {
+  cursor: pointer;
+}
+
 .icon:hover path {
   fill: var(--almost-white);
 }
