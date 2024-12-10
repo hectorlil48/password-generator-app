@@ -49,3 +49,51 @@ document.addEventListener("copy", (event) => {
     showCopiedMessage();
   }
 });
+
+// Generate Random Password
+
+function generatePassword() {
+  const lowercase = "abcdefghijklmnopqrstuvwxyz";
+  const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  const specialChars = "!@#$%^&*()_+[]{}|;:,.<>?";
+
+  // Get user selections
+  const includeUppercase = document.getElementById("includeUppercase").checked;
+  const includeLowercase = document.getElementById("includeLowercase").checked;
+  const includeNumbers = document.getElementById("includeNumbers").checked;
+  const includeSymbols = document.getElementById("includeSymbols").checked;
+  const length = parseInt(document.getElementById("character-length").value);
+
+  if (
+    !includeUppercase &&
+    !includeLowercase &&
+    !includeNumbers &&
+    !includeSymbols
+  ) {
+    alert("Please select at least one character type!");
+    return;
+  }
+
+  // Build the character pool based on users selection
+  let characterPool = "";
+  if (includeUppercase) characterPool += uppercase;
+  if (includeLowercase) characterPool += lowercase;
+  if (includeNumbers) characterPool += numbers;
+  if (includeSymbols) characterPool += specialChars;
+
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += getRandomChar(characterPool);
+  }
+
+  // Display password and change some styles
+  passwordElement.innerText = password;
+  passwordElement.style.color = "#e6e5ea";
+  passwordElement.style.opacity = "1";
+}
+
+// Get Random str from character pool
+function getRandomChar(str) {
+  return str[Math.floor(Math.random() * str.length)];
+}
