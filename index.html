@@ -17,9 +17,9 @@
   <body>
     <main class="container">
       <h1 class="title">Password Generator</h1>
-      <div class="password-icon-container">
+      <div class="password-icon-container flex">
         <p class="password">PTx1f5DaFX</p>
-        <div class="icon-container">
+        <div class="icon-container flex">
           <p class="copied-message">COPIED</p>
           <svg
             class="icon"
@@ -37,7 +37,7 @@
 
       <div class="form-container">
         <div class="slider-container">
-          <div class="slider-labels">
+          <div class="slider-labels flex">
             <label for="slider">Character Length</label>
             <p class="slider-value" id="slider-value">0</p>
           </div>
@@ -51,7 +51,7 @@
           />
         </div>
 
-        <div class="checkbox-container">
+        <div class="checkbox-container flex">
           <div>
             <input type="checkbox" id="includeUppercase" />
             <label for="includeUppercase">
@@ -141,22 +141,22 @@
           </div>
         </div>
 
-        <div class="strength-container">
-          <p>Strength</p>
-          <div class="strength-rating">
-            <p class="rating">Medium</p>
-            <div class="strengthMeter">
-              <div class="strengthBar"></div>
-              <div class="strengthBar"></div>
-              <div class="strengthBar"></div>
-              <div class="strengthBar"></div>
+        <div class="strength-container flex">
+          <p class="strength-title">Strength</p>
+          <div class="strength-rating flex">
+            <p class="rating"></p>
+            <div class="strength-meter flex">
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
             </div>
           </div>
         </div>
 
-        <button>
-          Generate
-          <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+        <button class="btn flex">
+          <span>Generate</span>
+          <svg width="11.11" height="12" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="#24232C"
               d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
