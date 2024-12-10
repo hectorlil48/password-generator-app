@@ -1,3 +1,14 @@
+// Get the root element
+const rootStyles = getComputedStyle(document.documentElement);
+
+// Access a specific CSS variable
+const redColor = rootStyles.getPropertyValue("--red").trim();
+const orangeColor = rootStyles.getPropertyValue("--orange").trim();
+const yellowColor = rootStyles.getPropertyValue("--yellow").trim();
+const greenColor = rootStyles.getPropertyValue("--neon-green").trim();
+const whiteColor = rootStyles.getPropertyValue("--almost-white").trim();
+
+// Set up variables
 const slider = document.getElementById("character-length");
 const sliderValue = document.getElementById("slider-value");
 const passwordElement = document.querySelector(".password");
@@ -89,11 +100,50 @@ function generatePassword() {
 
   // Display password and change some styles
   passwordElement.innerText = password;
-  passwordElement.style.color = "#e6e5ea";
+  passwordElement.style.color = whiteColor;
   passwordElement.style.opacity = "1";
+
+  // Evaluate password strength
+  const strength = evaluatePasswordStrength(password);
+  updateStrengthMeter(strength);
 }
 
 // Get Random str from character pool
 function getRandomChar(str) {
   return str[Math.floor(Math.random() * str.length)];
+}
+
+// Function to evaluate password strength
+function evaluatePasswordStrength(password) {
+  let strength = 0;
+
+  if (password.length >= 8) strength++; // Minimun length
+  if (/[A-Z]/.test(password)) strength++; // Contains uppercase
+  if (/[a-z]/.test(password)) strength++; // Contains lowercase
+  if (/[0-9]/.test(password)) strength++; // Contains numbers
+  if (/[^A-Za-z0-9]/.test(password)) strength++; // Contains lowercase
+
+  return strength;
+}
+
+function updateStrengthMeter(strength) {
+  const boxes = document.querySelectorAll(".strength-bar");
+
+  // Clear all boxes
+  boxes.forEach((box) => (box.style.border = `2px solid ${whiteColor}`));
+
+  // Update styles for active boxes based on strength
+  for (let i = 0; i < strength; i++) {
+    if (strength === 1) {
+      boxes[i].style.backgroundColor = redColor; // Too weak
+    } else if (strength === 2) {
+      boxes[i].style.backgroundColor = orangeColor; // Weak
+    } else if (strength === 3) {
+      boxes[i].style.backgroundColor = yellowColor; // Medium
+    } else if (strength >= 4) {
+      boxes[i].style.backgroundColor = greenColor; // Strong
+    }
+
+    boxes[i].style.border = "none"; // Remove border for active boxes
+  }
 }
