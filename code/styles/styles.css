@@ -22,7 +22,7 @@
   --heading-font-size: 2rem;
   --heading-line-height: 43px;
   --medium-heading-font-size: 1.5rem;
-  --medium-heading-line-height: 31px;
+  --medium-heading-line-height: 32px;
   --body-font-size: 1.125rem;
   --body-line-height: 23px;
 }
@@ -71,6 +71,7 @@ body {
 
 .container {
   width: 540px;
+  margin: 0 16px;
 }
 
 .title {
@@ -297,4 +298,25 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
 
 .btn:hover path {
   fill: var(--neon-green);
+}
+
+@media only screen and (max-width: 500px) {
+  :root {
+    /* Sizes */
+    --heading-font-size: 1.5rem;
+    --heading-line-height: 32px;
+    --medium-heading-font-size: 1rem;
+    --medium-heading-line-height: 21px;
+    --body-font-size: 1rem;
+    --body-line-height: 21px;
+  }
+
+  .title {
+    margin-bottom: 16px;
+  }
+
+  .password-icon-container {
+    padding: 17px 16px 15px 16px;
+    margin-bottom: 16px;
+  }
 }
