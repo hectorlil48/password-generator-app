@@ -15,6 +15,69 @@ const passwordElement = document.querySelector(".password");
 const iconElement = document.querySelector(".icon");
 const copiedMessage = document.querySelector(".copied-message");
 
+// Array of bad words
+const badWords = [
+  "fuck",
+  "shit",
+  "bitch",
+  "asshole",
+  "dick",
+  "cock",
+  "pussy",
+  "bastard",
+  "bimbo",
+  "cunt",
+  "whore",
+  "slut",
+  "fag",
+  "nigger",
+  "chink",
+  "spic",
+  "kike",
+  "queer",
+  "faggot",
+  "retard",
+  "motherfucker",
+  "twat",
+  "prick",
+  "douchebag",
+  "cum",
+  "piss",
+  "pussy",
+  "testicle",
+  "rape",
+  "incest",
+  "bestiality",
+  "pedophile",
+  "rape",
+  "stupid",
+  "ugly",
+  "fat",
+  "slutty",
+  "skank",
+  "whore",
+  "idiot",
+  "moron",
+  "retarded",
+  "cockhead",
+  "cocktail",
+  "dickhead",
+  "cockfucker",
+  "jizz",
+  "anal",
+  "butt",
+  "shithead",
+  "crackhead",
+  "motherfucking",
+  "suckmydick",
+  "asshat",
+  "cockwomble",
+  "muppet",
+  "toadstool",
+  "bitchface",
+  "fucktard",
+];
+
 // Function to update the slider's display and style
 function updateSlider(slider, valueDisplay) {
   const min = Number(slider.min);
@@ -77,12 +140,15 @@ function generatePassword() {
   const length = parseInt(document.getElementById("character-length").value);
 
   if (
-    !includeUppercase &&
-    !includeLowercase &&
-    !includeNumbers &&
-    !includeSymbols
+    (!includeUppercase &&
+      !includeLowercase &&
+      !includeNumbers &&
+      !includeSymbols) ||
+    length <= 0
   ) {
-    alert("Please select at least one character type!");
+    alert(
+      "Please select at least one character type and specify a valid password length!"
+    );
     return;
   }
 
@@ -98,6 +164,11 @@ function generatePassword() {
     password += getRandomChar(characterPool);
   }
 
+  // Check if the generated password contains any bad words
+  if (containsBadWords(password)) {
+    return generatePassword(); // Regenerate password if it contains bad words
+  }
+
   // Display password and change some styles
   passwordElement.innerText = password;
   passwordElement.style.color = whiteColor;
@@ -111,6 +182,16 @@ function generatePassword() {
 // Get Random str from character pool
 function getRandomChar(str) {
   return str[Math.floor(Math.random() * str.length)];
+}
+
+// Function to check if a password contains any bad words
+function containsBadWords(password) {
+  for (let word of badWords) {
+    if (password.toLowerCase().includes(word)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Function to evaluate password strength
