@@ -128,20 +128,28 @@ function evaluatePasswordStrength(password) {
 
 function updateStrengthMeter(strength) {
   const boxes = document.querySelectorAll(".strength-bar");
+  const rating = document.querySelector(".rating");
 
-  // Clear all boxes
-  boxes.forEach((box) => (box.style.border = `2px solid ${whiteColor}`));
+  // Reset all boxes to default styles
+  boxes.forEach((box) => {
+    box.style.backgroundColor = "transparent";
+    box.style.border = `2px solid ${whiteColor}`; // Default border
+  });
 
   // Update styles for active boxes based on strength
   for (let i = 0; i < strength; i++) {
     if (strength === 1) {
-      boxes[i].style.backgroundColor = redColor; // Too weak
+      boxes[i].style.backgroundColor = redColor;
+      rating.innerText = "too weak!"; // Too weak
     } else if (strength === 2) {
-      boxes[i].style.backgroundColor = orangeColor; // Weak
+      boxes[i].style.backgroundColor = orangeColor;
+      rating.innerText = "weak"; // Weak
     } else if (strength === 3) {
-      boxes[i].style.backgroundColor = yellowColor; // Medium
+      boxes[i].style.backgroundColor = yellowColor;
+      rating.innerText = "medium"; // Medium
     } else if (strength >= 4) {
-      boxes[i].style.backgroundColor = greenColor; // Strong
+      boxes[i].style.backgroundColor = greenColor;
+      rating.innerText = "strong"; // Strong
     }
 
     boxes[i].style.border = "none"; // Remove border for active boxes

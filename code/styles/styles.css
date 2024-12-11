@@ -282,9 +282,19 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
   width: 100%;
   gap: 24px;
   background-color: var(--neon-green);
+  border: 2px solid var(--neon-green);
   color: var(--dark-grey);
   padding: 21px 0;
   font-size: var(--body-font-size);
   line-height: var(--body-line-height);
   text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: var(--dark-grey);
+  color: var(--neon-green);
+}
+
+.btn:hover path {
+  fill: var(--neon-green);
 }
