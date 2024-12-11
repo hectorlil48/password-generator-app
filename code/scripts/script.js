@@ -216,23 +216,32 @@ function updateStrengthMeter(strength) {
     box.style.backgroundColor = "transparent";
     box.style.border = `2px solid ${whiteColor}`; // Default border
   });
-
-  // Update styles for active boxes based on strength
-  for (let i = 0; i < strength; i++) {
-    if (strength === 1) {
-      boxes[i].style.backgroundColor = redColor;
-      rating.innerText = "too weak!"; // Too weak
-    } else if (strength === 2) {
-      boxes[i].style.backgroundColor = orangeColor;
-      rating.innerText = "weak"; // Weak
-    } else if (strength === 3) {
-      boxes[i].style.backgroundColor = yellowColor;
-      rating.innerText = "medium"; // Medium
-    } else if (strength >= 4) {
-      boxes[i].style.backgroundColor = greenColor;
-      rating.innerText = "strong"; // Strong
+  // Set the color for boxes based on the strength
+  for (let i = 0; i < boxes.length; i++) {
+    if (i < strength) {
+      if (strength === 1) {
+        boxes[i].style.backgroundColor = redColor;
+      } else if (strength === 2) {
+        boxes[i].style.backgroundColor = orangeColor;
+      } else if (strength === 3) {
+        boxes[i].style.backgroundColor = yellowColor;
+      } else if (strength >= 4) {
+        boxes[i].style.backgroundColor = greenColor;
+      }
+      boxes[i].style.border = "none"; // Remove border for active boxes
+    } else {
+      boxes[i].style.backgroundColor = "transparent"; // Reset the inactive boxes
     }
+  }
 
-    boxes[i].style.border = "none"; // Remove border for active boxes
+  // Update the rating text based on strength
+  if (strength === 1) {
+    rating.innerText = "too weak!";
+  } else if (strength === 2) {
+    rating.innerText = "weak";
+  } else if (strength === 3) {
+    rating.innerText = "medium";
+  } else if (strength >= 4) {
+    rating.innerText = "strong";
   }
 }

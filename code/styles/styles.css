@@ -61,6 +61,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .flex {
@@ -71,7 +72,7 @@ body {
 
 .container {
   width: 540px;
-  margin: 0 16px;
+  margin: 0 12px;
 }
 
 .title {
@@ -102,10 +103,13 @@ body {
 .copied-message {
   color: var(--neon-green);
   display: none;
+  animation: fadeInOut 2s ease-in-out;
 }
 
 .icon {
   cursor: pointer;
+  width: 21px;
+  width: 24px;
 }
 
 .icon:hover path {
@@ -121,7 +125,7 @@ body {
   margin-bottom: 32px;
 }
 
-.slider-labels {
+.slider-label {
   justify-content: space-between;
   margin-bottom: 16px;
   font-size: var(--body-font-size);
@@ -148,6 +152,11 @@ body {
   outline: none; /* Remove focus outline */
   cursor: pointer;
   transition: background 0.3s; /* Smooth transition */
+}
+
+.slider:focus {
+  border: 2px solid var(--neon-green);
+  background-color: var(--very-dark-grey);
 }
 
 /* Thumb styling */
@@ -193,7 +202,9 @@ body {
 
 /* Hide the default checkbox */
 input[type="checkbox"] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 /* Style the label */
@@ -219,10 +230,17 @@ input[type="checkbox"] + label .custom-checkbox {
   justify-content: center;
   align-items: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  transform: scale(1.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* When checkbox is checked */
+/* When checkbox is hovered */
 input[type="checkbox"]:hover + label .custom-checkbox {
+  border-color: var(--neon-green); /* Green border */
+}
+
+/* When checkbox is hovered */
+input[type="checkbox"]:focus + label .custom-checkbox {
   border-color: var(--neon-green); /* Green border */
 }
 
@@ -230,6 +248,7 @@ input[type="checkbox"]:hover + label .custom-checkbox {
 input[type="checkbox"]:checked + label .custom-checkbox {
   background-color: var(--neon-green); /* Green background */
   border-color: var(--neon-green); /* Green border */
+  transform: scale(1.05);
 }
 
 /* SVG checkmark - hidden by default */
@@ -277,6 +296,12 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
   width: 10px;
   height: 28px;
   border: 2px solid var(--almost-white);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:focus,
+.icon:focus {
+  outline: 3px solid var(--neon-green);
 }
 
 .btn {
@@ -289,6 +314,7 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
   font-size: var(--body-font-size);
   line-height: var(--body-line-height);
   text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn:hover {
@@ -300,7 +326,54 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
   fill: var(--neon-green);
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 505px) {
+  :root {
+    /* Sizes */
+    --heading-font-size: 1.75rem;
+    --heading-line-height: 36px;
+    --medium-heading-font-size: 1.125rem;
+    --medium-heading-line-height: 26px;
+    --body-font-size: 1.1rem;
+    --body-line-height: 22px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  .password-icon-container {
+    padding: 18px 20px 18px 24px;
+    margin-bottom: 18px;
+  }
+
+  .icon {
+    width: 19px;
+    height: 21px;
+  }
+
+  .form-container {
+    padding: 20px 26px 26px;
+  }
+
+  .slider-label {
+    margin-bottom: 12px;
+  }
+
+  .checkbox-container {
+    gap: 18px;
+  }
+
+  .strength-container {
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    gap: 18px;
+  }
+}
+
+@media only screen and (max-width: 455px) {
   :root {
     /* Sizes */
     --heading-font-size: 1.5rem;
@@ -318,5 +391,56 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
   .password-icon-container {
     padding: 17px 16px 15px 16px;
     margin-bottom: 16px;
+  }
+
+  .icon {
+    width: 17.5px;
+    height: 20px;
+  }
+
+  .form-container {
+    padding: 16px;
+  }
+
+  .slider-label {
+    margin-bottom: 8px;
+  }
+
+  .checkbox-container {
+    gap: 16px;
+  }
+
+  .strength-container {
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    padding: 18px 0 17px;
+    gap: 16px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
