@@ -155,7 +155,7 @@ body {
 }
 
 .slider:focus {
-  border: 2px solid var(--neon-green);
+  border: 1px solid var(--neon-green);
   background-color: var(--very-dark-grey);
 }
 
@@ -239,7 +239,7 @@ input[type="checkbox"]:hover + label .custom-checkbox {
   border-color: var(--neon-green); /* Green border */
 }
 
-/* When checkbox is hovered */
+/* When checkbox is focused */
 input[type="checkbox"]:focus + label .custom-checkbox {
   border-color: var(--neon-green); /* Green border */
 }
