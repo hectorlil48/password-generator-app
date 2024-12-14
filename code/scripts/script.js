@@ -9,7 +9,7 @@ const greenColor = rootStyles.getPropertyValue("--neon-green").trim();
 const whiteColor = rootStyles.getPropertyValue("--almost-white").trim();
 
 // Set up variables
-const slider = document.getElementById("character-length");
+const slider = document.getElementById("slider");
 const sliderValue = document.getElementById("slider-value");
 const passwordElement = document.querySelector(".password");
 const iconElement = document.querySelector(".icon");
