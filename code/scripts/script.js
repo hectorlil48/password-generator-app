@@ -137,7 +137,7 @@ function generatePassword() {
   const includeLowercase = document.getElementById("includeLowercase").checked;
   const includeNumbers = document.getElementById("includeNumbers").checked;
   const includeSymbols = document.getElementById("includeSymbols").checked;
-  const length = parseInt(document.getElementById("character-length").value);
+  const length = parseInt(document.getElementById("slider").value);
 
   if (
     (!includeUppercase &&

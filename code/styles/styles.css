@@ -46,6 +46,7 @@ button {
   outline: none;
   background: none;
   font: inherit;
+  padding: 0;
 }
 
 button {
@@ -301,7 +302,7 @@ input[type="checkbox"]:checked + label .custom-checkbox svg {
 
 button:focus,
 .icon:focus {
-  outline: 3px solid var(--neon-green);
+  transform: scale(1.07);
 }
 
 .btn {
